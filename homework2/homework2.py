@@ -44,5 +44,19 @@ get_list_sum(6)
 # Задайте список из N элементов, заполненных числами из промежутка [-N, N]. Найдите произведение элементов на указанных позициях.
 # Позиции хранятся в файле file.txt в одной строке одно число.(для продвинутых - с файлом, вариант минимум - ввести позиции в консоли) -2 -1 0 1 2 Позиции: 0,1 -> 2
 #positions.txt
+def read_file(n):
+    res = []
+    for i in range(-n, n + 1):
+        res.append(i)
+    print(res)
+    f = open('positions.txt','r')
+    l = f.readlines()
+    # s = ''.join(l)
+    print(l)
+    print(res[int(l[0])])
+    print(res[int(l[1])])
+    print(res[int(l[2])])
+    f.close()
+read_file(5)
 
 # Реализуйте алгоритм перемешивания списка.
