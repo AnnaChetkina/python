@@ -6,15 +6,16 @@ import math
 # - [2, 3, 5, 9, 3] -> на нечётных позициях элементы 3 и 9, ответ: 12
 print('Задача 1:')
 
-l = [2, 3, 5, 9, 3, 8]
+l = [2, 3, 5, 9, 3]
 
 
 def odd_el_sum(l):
-    summa = 0
-    for ind in range(0, len(l)):
-        if ind % 2 == 1:
-            summa += l[ind]
-    print(f'Сумма элементов списка {l}, стоящих на нечётной позиции = {summa}')
+    # summa = 0
+    # for ind in range(0, len(l)):
+    #     if ind % 2 == 1:
+    #         summa += l[ind]
+    # print(f'Сумма элементов списка {l}, стоящих на нечётной позиции = {summa}')
+    print(sum(l[1::2])) # последняя 2 в срезе означает, что мы идем через 2 элемента
 
 odd_el_sum(l)
 print()
@@ -86,7 +87,7 @@ def get_binary(num, res: str):
 
 num = 15
 print(f"{num} = {get_binary(num, '')}")
-print(f'{num} = {bin(15)} # Проверка через встроенную функцию ')
+print(f'{num} = {bin(15)[2:]} # Проверка через встроенную функцию ')
 print()
 
 
