@@ -1,3 +1,9 @@
+import math
+import random
+
+import sympy
+from sympy import simplify
+
 # 1) 10-9 округление до этого числа
 # 2) число делим на что без остатка, из делителей можно получить уникальные, если перевести в сэт (множество),
 # метод sympy
@@ -10,9 +16,6 @@
 # *Пример:*
 # - при d = 0.001, π = 3.141
 # - при d = 0.0001, π = 3.1415
-import math
-
-import sympy
 
 
 def get_pi():
@@ -44,7 +47,6 @@ def prime_factors(n):
 
 # 3'. Задайте последовательность чисел. Напишите программу, которая выведет список неповторяющихся элементов исходной последовательности.
 
-import random
 def non_repeating_values(values_count, values_range):
     init_list = [random.randint(0, values_range) for elem in range(0, values_count)]
     res_list = list(set(init_list))
@@ -54,19 +56,21 @@ def non_repeating_values(values_count, values_range):
 # 4'. Задана натуральная степень k. Сформировать случайным образом список коэффициентов (значения от 0 до 100) многочлена и записать в файл многочлен степени k.
 # Пример:
 # k=2 => 2*x*2 + 4*x + 5 = 0 или x2 + 5 = 0 или 10*x*2 = 0
-def func(k):
+def generate_polynom(k):
     coefficients = [random.randint(0, 100) for elem in range(0, k + 1)]
     print('coefficients', coefficients)
     eq = ''
     for i in range(0, len(coefficients) - 1):
         eq += f'{coefficients[i]}*x**{k - i}+'
     eq += f'{coefficients[-1]}'
+    # eq = sympy.simplify(eq)
     print(eq)
     x = sympy.Symbol('x')
     solutions = sympy.solve(eq, x)
     print(solutions, ' = solution')
+    return eq
 print('Task 4')
-func(2)
+generate_polynom(2)
 
 # Даны два файла, в каждом из которых находится запись многочлена. Задача - сформировать файл, содержащий сумму многочленов.
 # В file1.txt :
@@ -75,3 +79,12 @@ func(2)
 # 4*x**2 + 1*x + 4
 # Результирующий файл:
 # 6*x**2 + 5*x + 9
+#
+# expr1 = "90*x**2+60*x**1+100"
+# expr2 = "10*x**2+40*x**1"
+
+expr1 = generate_polynom(2)
+expr2 = generate_polynom(3)
+
+smpl = sympy.simplify(expr1 + "+" + expr2)
+print("After Simplification : {}".format(smpl))
