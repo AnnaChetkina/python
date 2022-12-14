@@ -16,7 +16,7 @@ def candies_game():
         print('Осталось конфет в этом ходу', candies)
 
 
-candies_game()
+# candies_game()
 print()
 
 

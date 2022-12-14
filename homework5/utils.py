@@ -1,3 +1,5 @@
+import random
+
 max_candies_in_move = 28
 
 def player1_move(candies):
@@ -29,12 +31,16 @@ def human_move(candies):
 
 
 def move(player: str, candies: int) -> int:
-    player_move = int(
-        input(f'{player} берет конфеты (не более {max_candies_in_move} шт):')
-    )
-    while player_move not in range(0, max_candies_in_move + 1):
+    if player == 'БОТ':
+        player_move = random.randint(1, 28)
+        print(f'{player} взял {player_move} шт.')
+    else:
         player_move = int(
-            input(f'Введите корректное количество конфет (не более {max_candies_in_move} шт):')
+            input(f'{player} берет конфеты (не более {max_candies_in_move} шт):')
         )
+        while player_move not in range(0, max_candies_in_move + 1):
+            player_move = int(
+                input(f'Введите корректное количество конфет (не более {max_candies_in_move} шт):')
+            )
     candies -= player_move
     return candies
