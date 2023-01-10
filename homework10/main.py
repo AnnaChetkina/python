@@ -1,4 +1,5 @@
-# Создать бота для вывода текущего курса валют(желательно запрос по конкретной валюте)
+# Создать бота для вывода текущего курса валют (желательно запрос по конкретной валюте)
+
 import json
 import requests
 import telebot
@@ -47,10 +48,8 @@ def get_valutes():
     response = requests.get('https://www.cbr-xml-daily.ru/daily_json.js')
     res = json.loads(response.content)
     valute = res['Valute']
-    # print('valute', valute)
     valutes_comands = list(map(lambda el: '/' + el['CharCode'] + '-' + el['Name'], valute.values()))
     valutes_comands = "\n".join(valutes_comands)
-    # print('valutes_comands', valutes_comands)
     return valutes_comands
 
 
@@ -58,8 +57,8 @@ def get_valutes():
     commands=['AUD', 'AZN', 'GBP', 'AMD', 'BYN', 'BGN', 'BRL', 'HUF', 'HKD', 'DKK', 'USD', 'EUR', 'INR',
               'KZT', 'CAD', 'KGS', 'CNY', 'MDL', 'NOK', 'PLN', 'RON', 'XDR', 'SGD', 'TJS', 'TRY', 'TMT',
               'UZS', 'UAH', 'CZK', 'SEK', 'CHF', 'ZAR', 'KRW', 'JPY'])
-def get_valute(message):
-    """get valute"""
+def get_current_valute(message):
+    """get current valute"""
     global msg_ids, valute
 
     if not valute:
