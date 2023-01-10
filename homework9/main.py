@@ -7,8 +7,13 @@
 import telebot
 import random
 
+TOKEN = None
 
-bot = telebot.TeleBot("5732636743:AAH2Aw00pm_z2BwUsGyl1ZkT8JnkY3FzFRA")
+with open("token.txt") as f:
+    TOKEN = f.read().strip()
+
+bot = telebot.TeleBot(TOKEN)
+
 
 candies = 117
 max_candies_in_move = 28
